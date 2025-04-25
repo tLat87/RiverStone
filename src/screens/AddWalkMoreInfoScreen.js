@@ -4,10 +4,11 @@ import { launchImageLibrary } from 'react-native-image-picker'; // Импорт 
 import BackSvg from '../assets/svg/BackSvg';
 import AccentSvg from '../assets/svg/AccentSvg';
 import EmptyPhotoSvg from '../assets/svg/EmptyPhotoSvg';
+import {useSelector} from 'react-redux';
 
 const AddWalkMoreInfoScreen = ({ navigation, route }) => {
     const { date, durationHours, durationMinutes, place } = route.params;
-
+    const isDark = useSelector((state) => state.theme.isDark);
     const [photos, setPhotos] = useState([]); // Хранение загруженных фото
     const [notes, setNotes] = useState(''); // Поле описания
 
@@ -28,7 +29,7 @@ const AddWalkMoreInfoScreen = ({ navigation, route }) => {
     const isFormComplete = photos.length > 0 && notes.trim() !== '';
 
     return (
-        <View style={{ backgroundColor: '#0A0A0A', flex: 1, paddingHorizontal: 16,alignItems: 'center', }}>
+        <View style={{ backgroundColor: isDark ? '#0A0A0A' : '#00DDCD', flex: 1, paddingHorizontal: 16,alignItems: 'center', }}>
             <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', left: 20, top: 70 }}>
                 <BackSvg />
             </TouchableOpacity>

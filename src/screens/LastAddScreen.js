@@ -2,7 +2,7 @@
 
 import { Image, TouchableOpacity, Text, View } from 'react-native';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import AccentSvg from '../assets/svg/AccentSvg';
 import {addTrip} from '../redux/slices/tripSlice';
 
@@ -36,9 +36,10 @@ const LastAddScreen = ({ navigation, route }) => {
             navigation.pop(3);
         }
     };
+    const isDark = useSelector((state) => state.theme.isDark);
 
     return (
-        <View style={{ backgroundColor: '#000', flex: 1, paddingHorizontal: 16 }}>
+        <View style={{ backgroundColor: isDark ? '#0A0A0A' : '#00DDCD', flex: 1, paddingHorizontal: 16 }}>
             <Image source={require('../assets/img/img.png')} style={{ alignSelf: 'center', marginTop: 100 }} />
             <View>
                 <TouchableOpacity

@@ -20,10 +20,10 @@ const TripDetailsScreen = ({ route }) => {
         dispatch(removeTrip(tripId));
         navigation.goBack();
     };
-
+    const isDark = useSelector((state) => state.theme.isDark);
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: isDark ? '#0A0A0A' : '#00DDCD',}]}>
             <Image source={{ uri: tripData.photos[0] }} style={styles.image} />
             <View style={styles.overlayIcons}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={{ }}>

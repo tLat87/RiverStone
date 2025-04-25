@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ChevronRight from '../assets/svg/ChevronRight';
 import RightYellowSvg from '../assets/svg/RightYellowSvg';
 import BackSvg from '../assets/svg/BackSvg';
+import {useSelector} from 'react-redux';
 
 const expert = [
     {
@@ -206,9 +207,10 @@ const DifficultyLevelScreen = ({ navigation }) => {
         }
     };
 
+    const isDark = useSelector((state) => state.theme.isDark);
 
     return (
-        <View style={{ backgroundColor: '#000', flex: 1, paddingHorizontal: 16, justifyContent: 'space-around', alignItems: 'center' }}>
+        <View style={{ backgroundColor: isDark ? '#0A0A0A' : '#00DDCD', flex: 1, paddingHorizontal: 16, justifyContent: 'space-around', alignItems: 'center' }}>
             <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', left: 20, top: 70 }}>
                 <BackSvg />
             </TouchableOpacity>

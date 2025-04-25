@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import BackSvg from '../assets/svg/BackSvg';
 import AccentSvg from '../assets/svg/AccentSvg';
+import {useSelector} from 'react-redux';
 
 const AddWalkScreen = ({ navigation }) => {
     const [place, setPlace] = useState('');
@@ -26,9 +27,10 @@ const AddWalkScreen = ({ navigation }) => {
     };
 
     const isFormComplete = place.trim() !== '' && durationHours !== null && date !== null;
+    const isDark = useSelector((state) => state.theme.isDark);
 
     return (
-        <View style={{ backgroundColor: '#0A0A0A', flex: 1, paddingHorizontal: 16, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={{ backgroundColor: isDark ? '#0A0A0A' : '#00DDCD', flex: 1, paddingHorizontal: 16, justifyContent: 'center', alignItems: 'center' }}>
             {/* Кнопка Назад */}
             <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', left: 20, top: 70 }}>
                 <BackSvg />

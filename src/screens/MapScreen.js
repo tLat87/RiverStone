@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Alert } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import {useSelector} from 'react-redux';
 
 const MapScreen = ({ navigation }) => {
     const [region, setRegion] = useState({
@@ -33,9 +34,10 @@ const MapScreen = ({ navigation }) => {
             Alert.alert('Invalid coordinates', 'Please enter valid latitude and longitude.');
         }
     };
+    const isDark = useSelector((state) => state.theme.isDark);
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: isDark ? '#0A0A0A' : '#00DDCD',}]}>
             <Text style={styles.header}>Catalog of Observations</Text>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.buttonYellow}>

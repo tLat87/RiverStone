@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux'; // Импортируем useSelector
 
 const HomeScreen = ({ navigation }) => {
     const trips = useSelector(state => state.trip.trips); // Получаем список трипов из Redux
-    console.log(trips)
+    const isDark = useSelector((state) => state.theme.isDark);
     return (
-        <View style={{ backgroundColor: '#000', flex: 1, paddingHorizontal: 16 }}>
+        <View style={{  backgroundColor: isDark ? '#0A0A0A' : '#00DDCD', flex: 1, paddingHorizontal: 16 }}>
             <ScrollView style={{ backgroundColor: '#000', flex: 1, paddingHorizontal: 16 }}>
                 <View style={{ marginTop: '40%' }}>
                     <Image source={require('../assets/img/img.png')} style={{ alignSelf: 'center' }} />

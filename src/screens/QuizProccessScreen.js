@@ -2,6 +2,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import BackSvg from '../assets/svg/BackSvg';
 import AccentSvg from '../assets/svg/AccentSvg';
+import {useSelector} from 'react-redux';
 
 const QuizProccessScreen = ({ navigation, route }) => {
     const { questions } = route.params;
@@ -35,9 +36,10 @@ const QuizProccessScreen = ({ navigation, route }) => {
             navigation.navigate('Result', {score}); // Замени на нужный экран
         }
     };
+    const isDark = useSelector((state) => state.theme.isDark);
 
     return (
-        <View style={{ backgroundColor: '#000', flex: 1, paddingHorizontal: 16, justifyContent: 'space-around', alignItems: 'center' }}>
+        <View style={{ backgroundColor: isDark ? '#0A0A0A' : '#00DDCD', flex: 1, paddingHorizontal: 16, justifyContent: 'space-around', alignItems: 'center' }}>
             <TouchableOpacity onPress={() => navigation.goBack()} style={{ position: 'absolute', left: 20, top: 70 }}>
                 <BackSvg />
             </TouchableOpacity>
